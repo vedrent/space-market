@@ -21,10 +21,8 @@ const router = useRouter()
 const store = useMainStore()
 
 async function login() {
-  const data = await apiLogin(username.value, password.value)
-  console.log('Токен:', data.token)
-  store.setToken(data.token)
-  store.setUser(data.user)
+  const user = await apiLogin(username.value, password.value)
+  store.setUser(user)
   router.push('/dashboard/resources')
 }
 

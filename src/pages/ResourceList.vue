@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Ресурсы</h2>
-    <table>
+    <table class="table-container">
       <thead>
         <tr><th>Название</th><th>Цена</th><th>Редкость</th><th></th></tr>
       </thead>
@@ -84,6 +84,14 @@ async function buy(id: number) {
 </script>
 
 <style scoped>
+.table-container{
+  background-color: #1e1e2f;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  color: #eee;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
 .rarity-common {
   color: #2196f3; 
 }
@@ -98,10 +106,16 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
+h2 {
+  margin-bottom: 24px;
+  color: #66ccff;
+}
 td, th {
   padding: 8px 12px;
   border: 1px solid #ccc;
   text-align: center;
   cursor: pointer;
+  color: #66ccff;
 }
+
 </style>

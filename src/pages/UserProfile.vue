@@ -26,3 +26,10 @@ onMounted(async () => {
   inventory.value = await getInventory()
 })
 </script>
+
+<style scoped>
+h2, h3, p {
+  margin-bottom: 24px;
+  color: #66ccff;
+}
+</style>

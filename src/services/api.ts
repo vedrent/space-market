@@ -13,12 +13,12 @@ export async function getResourceDetail(id: number) {
   return {resource, userAmount }
 }
 
-export async function buyResource(id: number) {
-  await api.post(`/Resources/${id}/buy`)
+export async function buyResource(resourceId: number, quantity: number = 1) {
+  await api.post(`/Resources/buy/${resourceId}?quantity=${quantity}`)
 }
 
 export async function sellResource(id: number) {
-  await api.post(`/Resources/${id}/sell`)
+  await api.post(`/Resources/sell/${id}`)
 }
 
 export async function getAuctions() {
@@ -43,7 +43,7 @@ export async function getInventory() {
 
 export async function login(username: string, password: string) {
   const res = await api.post('/Auth/login', { username, password })
-  return res.data
+  return res.data.user
 }
 
 export async function register(username: string, password: string) {

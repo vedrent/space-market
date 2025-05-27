@@ -3,7 +3,7 @@
     <h2>Создать аукцион</h2>
 
     <form @submit.prevent="submit">
-      <label>
+      <label class="label-create">
         Ресурс:
         <select v-model="resourceId" required>
           <option v-for="r in resources" :key="r.id" :value="r.id">
@@ -13,13 +13,13 @@
       </label>
       <br />
 
-      <label>
+      <label class="label-create">
         Начальная цена:
         <input type="number" v-model.number="startPrice" min="0.01" step="0.01" required />
       </label>
       <br />
 
-      <label>
+      <label class="label-create">
         Длительность (в минутах):
         <input type="number" v-model.number="durationMinutes" min="1" required />
       </label>
@@ -60,3 +60,16 @@ async function submit() {
   router.push('/dashboard/auctions')
 }
 </script>
+
+<style scoped>
+h2, p, label {
+  /* margin-bottom: 24px; */
+  color: #66ccff;
+}
+button {
+  /* margin-top: 10px; */
+}
+input, option {
+  margin: 10px;
+}
+</style>

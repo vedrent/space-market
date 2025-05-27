@@ -46,3 +46,13 @@ async function makeBid() {
   remainingTime.value = data.remainingTime
 }
 </script>
+
+<style scoped>
+h2, p {
+  margin-bottom: 24px;
+  color: #66ccff;
+}
+button {
+  margin-left: 10px;
+}
+</style>

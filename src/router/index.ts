@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import AuthPage from '../pages/AuthPage.vue'
+// import AuthPage from '../pages/AuthPage.vue'
+import LoginPage from '../pages/LoginPage.vue'
+import RegisterPage from '../pages/RegisterPage.vue'
 import ServerSelect from '../components/ServerSelect.vue'
 import ResourceList from '../pages/ResourceList.vue'
 import ResourceDetail from '../pages/ResourceDetail.vue'
@@ -10,7 +12,8 @@ import CreateAuction from '../pages/CreateAuction.vue'
 
 const routes = [
   { path: '/', component: ServerSelect },
-  { path: '/login', component: AuthPage },
+  { path: '/login', component: LoginPage },
+  { path: '/register', component: RegisterPage },
   {
     path: '/dashboard',
     component: () => import('../layouts/DashboardLayout.vue'),

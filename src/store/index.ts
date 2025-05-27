@@ -3,15 +3,15 @@ import api from '../plugins/axios'
 
 export const useMainStore = defineStore('main', {
   state: () => ({
-    token: '',
+    // token: '',
     server: 'localhost:5227/api',
     user: null as null | { username: string, balance: number }
   }),
   actions: {
-    setToken(token: string) {
-      this.token = token
-      localStorage.setItem('token', token)
-    },
+    // setToken(token: string) {
+    //   this.token = token
+    //   localStorage.setItem('token', token)
+    // },
     setServer(server: string) {
       this.server = server
       localStorage.setItem('server', server)
