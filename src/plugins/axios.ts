@@ -17,6 +17,11 @@ api.interceptors.request.use((config) => {
     config.baseURL = `http://${store.server}`
   }
 
+  const userId = store.user?.id
+  if (userId) {
+    config.headers['X-User-Id'] = userId
+  }
+
   console.log('Отправляем запрос:', config.url)
   console.log('Заголовки:', config.headers)
 

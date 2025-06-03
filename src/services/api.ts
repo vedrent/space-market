@@ -8,17 +8,19 @@ export async function getResources() {
 }
 
 export async function getResourceDetail(id: number) {
-  const resource  = await api.get(`/Resources/${id}`).then(res => res.data)
-  const userAmount = 0
+  const {resource, userAmount} = await api.get(`/Resources/${id}`).then(res => res.data)
+  // const userAmount = 0
   return {resource, userAmount }
 }
 
 export async function buyResource(resourceId: number, quantity: number = 1) {
-  await api.post(`/Resources/buy/${resourceId}?quantity=${quantity}`)
+  const response = await api.post(`/Resources/buy/${resourceId}?quantity=${quantity}`)
+  return response.data
 }
 
-export async function sellResource(id: number) {
-  await api.post(`/Resources/sell/${id}`)
+export async function sellResource(resourceId: number, quantity: number = 1) {
+  const response = await api.post(`/Resources/sell/${resourceId}?quantity=${quantity}`)
+  return response.data
 }
 
 export async function getAuctions() {

@@ -117,4 +117,7 @@ td, th {
   cursor: pointer;
   color: #66ccff;
 }
+button {
+  background-color: #161663;
+}
 </style>

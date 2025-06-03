@@ -5,7 +5,7 @@ export const useMainStore = defineStore('main', {
   state: () => ({
     // token: '',
     server: 'localhost:5227/api',
-    user: null as null | { username: string, balance: number }
+    user: null as null | { username: string, balance: number, id: number, inventory: any[] }
   }),
   actions: {
     // setToken(token: string) {

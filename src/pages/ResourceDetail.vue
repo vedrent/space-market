@@ -21,12 +21,14 @@ import { useRoute } from 'vue-router'
 // import api from '../plugins/axios'
 import { useMainStore } from '../store'
 import { getResourceDetail, buyResource, sellResource } from '../services/api'
+import { getInventory } from '../services/api'
 import * as signalR from "@microsoft/signalr"
 
 const route = useRoute()
 const store = useMainStore()
 const resource = ref<any>(null)
 const inventoryAmount = ref<number>(0)
+const inventory = ref<any[]>([])
 const quantity = ref<number>(1)
 const error = ref<string | null>(null)
 
@@ -76,6 +78,12 @@ onMounted(async () => {
   await load()
   await connection.start()
   console.log('SignalR connected for detail page')
+
+  inventory.value = await getInventory()
+})
+
+const canBuy = computed(() => {
+  return quantity.value > 0 && resource.value && store.user?.balance >= resource.value.currentPrice * quantity.value
 })
 
 async function buy() {
@@ -90,8 +98,16 @@ async function buy() {
 }
 
 async function sell() {
-  await sellResource(Number(route.params.id))
-  await load()
+  error.value = null
+  try {
+    const res = await sellResource(Number(route.params.id), quantity.value)
+    store.user!.balance = res.balance // обновим баланс в store
+    await load()
+  } catch (err: any) {
+    error.value = err.response?.data || 'Произошла ошибка при продаже.'
+    return
+  }
+  
 }
 </script>
 
