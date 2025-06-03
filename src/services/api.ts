@@ -66,3 +66,8 @@ export async function createAuction(data: {
     endTime: endTime.toISOString()
   })
 }
+
+export async function getDailyEvents() {
+  const response = await api.get('/events')
+  return response.data
+}
